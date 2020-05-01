@@ -18,6 +18,7 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         self.chs_checkBox.stateChanged.connect(self.cht2chs)
 
         self.poem_title = ''
+        self.poem = {}
         self.sound = QSound('', self)  # 避免重疊播放問題。
         self.get_poem()
 
@@ -28,6 +29,9 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         for btn in buttons:
             if btn.objectName()[:2] in page_id:
                 btn.clicked.connect(self.on_sound_btn_click)
+        # 標題和作者按鈕，都要發音。
+        self.title_pushButton.clicked.connect(self.on_sound_btn_click)
+        self.author_pushButton.clicked.connect(self.on_sound_btn_click)
 
     def on_sound_btn_click(self):
         # 監聽按鈕 signal，然後查找發音文件。
@@ -38,22 +42,31 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         sender = self.sender()
         btn_text = sender.text()
         btn_name = sender.objectName()
-        # 通過 index 找到發音文件的文件名，通過文件路徑播放。
-        _type, index, rest = btn_name.split('_')
-        poem_sounds = poems.get(self.poem_title).get('sounds')
-        try:
-            btn_sound_name = poem_sounds[int(index) - 1]
-        except TypeError as e:
-            print('Maybe there is no sound-key in the poem-dict. Please check peoms.py.')
+
+        btn_sound_name = ''
+        if btn_name == 'title_pushButton' or btn_name == 'author_pushButton':
+            btn_sound_name = btn_text
         else:
+            # 通過 index 找到發音文件的文件名，通過文件路徑播放。
+            _type, index, rest = btn_name.split('_')
+            poem_sounds = self.poem.get('sounds')
+            try:
+                btn_sound_name = poem_sounds[int(index) - 1]
+            except TypeError as e:
+                print('Maybe there is no sound-key in the poem-dict. Please check peoms.py.')
+
+        try:
             sound_path = Path('audio') / f'{btn_sound_name}.wav'
+            print(sound_path)
             self.sound = QSound(sound_path.absolute().__str__(), self)  # QSound 不支持讀取 Path 對象。
             self.sound.play()
-        finally:
-            pass
+        except Exception as e:
+            print(e)
 
     def get_poem(self):
         self.poem_title = self.comboBox.currentText()
+        self.poem = poems.get(self.poem_title)
+
         if self.poem_title in poems:
             p = poems.get(self.poem_title)
             p_title = p.get('title')
@@ -62,8 +75,8 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
             p_type_id = p.get('type_id')
 
             # TODO: 如果有重名的詩，poems 字典中有數字結尾，顯示標題時應該刪除。
-            self.title_label.setText(p_title)
-            self.author_label.setText(p_author)
+            self.title_pushButton.setText(p_title)
+            self.author_pushButton.setText(p_author)
 
             if p_type_id == 'j5':
                 self.stackedWidget.setCurrentIndex(0)
