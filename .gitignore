@@ -1,0 +1,11 @@
+# Pycharm
+.idea/
+
+# Build
+src/
+target/
+
+# Files
+audio/
+*.m4a
+*.wav
