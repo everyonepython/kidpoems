@@ -7,6 +7,8 @@ buttons, labels, windows, dialogs, progress bars 等等。
 
 一个按钮 Button 上包含一个标签 Label
 
+# fbs - Python 打包工具
+下載源代碼後運行 main 可以會報錯，抱錯如下。
 ![img](https://build-system.fman.io/static/public/img/widgets.png)
 
 [此图的代码](a04_widgets_example.py)
@@ -17,6 +19,8 @@ Traceback (most recent call last):
     from fbs_runtime.application_context.PyQt5 import ApplicationContext
 ModuleNotFoundError: No module named 'fbs_runtime'
 ```
+原因是未安裝 fbs。
+fbs为Python程序打包、创建安装程序和签署应用程序提供了强大的环境。它支持管理应用程序的更新，它基于PyInstaller，因此它支持Linux，macOS和Windows。
 
 
 ### 页面设计与业务逻辑分离
