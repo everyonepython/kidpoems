@@ -8,5 +8,6 @@ target/
 # Files
 audio/
 __pycache__/
+test/
 *.m4a
 *.wav
