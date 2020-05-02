@@ -552,9 +552,6 @@ class Ui_MainWindow(object):
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox.setGeometry(QtCore.QRect(10, 10, 141, 32))
         self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.chs_checkBox = QtWidgets.QCheckBox(self.centralwidget)
         self.chs_checkBox.setGeometry(QtCore.QRect(30, 390, 81, 41))
         self.chs_checkBox.setObjectName("chs_checkBox")
@@ -594,7 +591,4 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_3.setText(_translate("MainWindow", "五言律诗"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "登鸛雀樓"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "靜夜思"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "涼州詞"))
         self.chs_checkBox.setText(_translate("MainWindow", "简体版本"))

@@ -1778,21 +1778,6 @@
       <height>32</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>登鸛雀樓</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>靜夜思</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>涼州詞</string>
-     </property>
-    </item>
    </widget>
    <widget class="QCheckBox" name="chs_checkBox">
     <property name="geometry">
