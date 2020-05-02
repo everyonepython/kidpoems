@@ -1,3 +1,4 @@
+# coding = utf-8
 import sys
 from pathlib import Path
 
@@ -14,7 +15,12 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        # 把唐詩標題添加至下拉菜單。
+        self.comboBox.addItems((p for p in poems.keys()))
+
+        # 根據下來菜單現值展示該唐詩。
         self.comboBox.currentTextChanged.connect(self.get_poem)
+        # 簡繁切換勾選框。
         self.chs_checkBox.stateChanged.connect(self.cht2chs)
 
         self.poem_title = ''
