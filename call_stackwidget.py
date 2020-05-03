@@ -104,10 +104,3 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
                 lb.setText(HanziConv.toSimplified(lb.text()))
         else:
             self.get_poem()
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    my_window = MyStackWidget()
-    my_window.show()
-    sys.exit(app.exec())
