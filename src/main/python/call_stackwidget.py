@@ -4,8 +4,10 @@ from pathlib import Path
 
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QLabel
 from PyQt5.QtMultimedia import QSound
+from PyQt5.QtGui import QFont
 from hanziconv import HanziConv
 
+from base import context
 from ui_stackwidget import Ui_MainWindow
 from poems import poems, page_id
 
@@ -62,8 +64,15 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
                 print('Maybe there is no sound-key in the poem-dict. Please check peoms.py.')
 
         try:
-            sound_path = Path('audio') / f'{btn_sound_name}.wav'
-            print(sound_path)
+            # 測試資源路徑
+            # self.title_pushButton.setText(resources_path)
+            # self.author_pushButton.setText(resources_path)
+            # self.author_pushButton.setFont(QFont('SansSerif', 10))
+            # sound_path = Path('audio') / f'{btn_sound_name}.wav'
+            resources_path = context.get_resource()
+            print(resources_path)
+            sound_path = Path(resources_path) / f'audio/{btn_sound_name}.wav'
+            print(sound_path.absolute().__str__())
             self.sound = QSound(sound_path.absolute().__str__(), self)  # QSound 不支持讀取 Path 對象。
             self.sound.play()
         except Exception as e:
