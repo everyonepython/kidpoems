@@ -1,15 +1,36 @@
-### 所有 App 界面上看到的内容都是一个组件 widget。
+## PyQt5 Qt-Creator 操作流程
 
-包括：
-buttons, labels, windows, dialogs, progress bars 等等。
+1. 打開 Qt-Creator
+2. File -> New File or Project
+3. File and Classes - Qt - Qt Designer Form
+4. Main Window 或 Widget
+   它們的區別是 Main Window 有菜單及狀態欄。
+5. Location -> Pycharm 項目的路徑。
 
-类似 HTML 元素一样，经常一个嵌套另一个。
+進入設計界面後，只需要用到 Design。
 
-一个按钮 Button 上包含一个标签 Label
+#### 左邊欄
+所有可用的 widget，只需要拖方進設計窗口即可。
+
+#### 右邊欄
+- 上面是 widget 的結構，可以拖動來改變從屬關係，像文件夾一樣。
+    - 記得修改每個 widget 的名字，否則在調用時很容易造成混亂。
+
+-  下面是所選 widget 的屬性，可以點擊進行更改。
+    - 注意設置 maximumSize，否則在設計中很容易造成 widget 變形。
+    - 可以參考屬性名字，在代碼中測試各種屬性。
+
+
+
+## 所有 App 界面上看到的内容都是一个组件 widget。
+
+- 包括buttons, labels, windows, dialogs, progress bars 等等。
+- 类似 HTML 元素一样，经常一个嵌套另一个。
+- 一个按钮 Button 上包含一个标签 Label
 
 
 ## 页面设计与业务逻辑分离
-编写逻辑文件是 Class 的设置
+编写逻辑文件時 Class-類 的设置
 
 如有报错为 `AttributeError: '***' object has no attribute 'setCentralWidget'`，很可能是没有继承 QMainWindow。
 
