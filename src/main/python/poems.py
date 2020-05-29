@@ -42,7 +42,7 @@ poems = {
         'title': '靜夜思',
         'author': '李白',
         'content': '床前明月光，疑似地上霜。舉頭望明月，低頭思故鄉。',
-        'sound': [
+        'sounds': [
             '床[cong4]',
             '前[cin4]',
             '明[ming4]',
