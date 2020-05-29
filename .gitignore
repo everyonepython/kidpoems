@@ -7,6 +7,7 @@ target/
 
 # Files
 audio/
+audio.zip
 __pycache__/
 test/
 *.m4a
