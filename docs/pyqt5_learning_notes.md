@@ -167,3 +167,6 @@ Done. You can now run `target/KidPoems.app/Contents/MacOS/KidPoems`.
 兩者的區別在於，直接運行 app 則沒有彈出 terminal，比較美觀。後者則彈出 terminal 像開發者調試的模式。
 
 
+## 參考資料
+- [fbs Manual](https://build-system.fman.io/manual/#get_resource)
+
