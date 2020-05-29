@@ -48,7 +48,7 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         if not self.sound.isFinished():
             self.sound.stop()  # 避免重疊播放問題。
         sender = self.sender()
-        sender.setDisabled(True)  # 標識按下的按鈕
+        sender.setStyleSheet('background-color: yellow')  # 標識按下的按鈕
         btn_text = sender.text()
         btn_name = sender.objectName()
 
@@ -76,7 +76,7 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         """重置所有 QPushButton。"""
         buttons = self.findChildren(QPushButton)
         for btn in buttons:
-            btn.setDisabled(False)
+            btn.setStyleSheet('')
 
     def get_poem(self):
         self.reset_all_bottons()
