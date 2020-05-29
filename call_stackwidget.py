@@ -43,9 +43,12 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         # 監聽按鈕 signal，然後查找發音文件。
         # 利用 index 在字典尋找發音，不需要理會是否簡繁體。
         # 若是律詩則需要計算 index 的位置。
+        self.reset_all_bottons()  # 重置按下的按鈕
+
         if not self.sound.isFinished():
             self.sound.stop()  # 避免重疊播放問題。
         sender = self.sender()
+        sender.setDisabled(True)  # 標識按下的按鈕
         btn_text = sender.text()
         btn_name = sender.objectName()
 
@@ -69,7 +72,15 @@ class MyStackWidget(QMainWindow, Ui_MainWindow):
         except Exception as e:
             print(e)
 
+    def reset_all_bottons(self):
+        """重置所有 QPushButton。"""
+        buttons = self.findChildren(QPushButton)
+        for btn in buttons:
+            btn.setDisabled(False)
+
     def get_poem(self):
+        self.reset_all_bottons()
+
         self.poem_title = self.comboBox.currentText()
         self.poem = poems.get(self.poem_title)
 
