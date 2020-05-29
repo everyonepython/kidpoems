@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from base import context
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

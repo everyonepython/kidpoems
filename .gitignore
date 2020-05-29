@@ -2,10 +2,12 @@
 .idea/
 
 # Build
-src/
+src/resources/base/audio/
 target/
 
 # Files
 audio/
+__pycache__/
+test/
 *.m4a
 *.wav
